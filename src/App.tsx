@@ -62,7 +62,7 @@ export default function App() {
         'Live game stat tracking from the sideline',
         'Season insights to follow team and player progress'
       ],
-      image: '/coachboard-icon.png',
+      image: './public/coachboard-icon.png',
       imageFit: 'contain',
       url: 'https://play.google.com/store/apps/details?id=com.coachmattb.coachboard',
       metrics: 'All-in-One Season Hub'
@@ -81,9 +81,9 @@ export default function App() {
         'Season stats, development reports, and exportable box scores',
         'Offline access for practices and live games'
       ],
-      image: '/courtside-hub-logo.jpg',
+      image: './public/courtside-hub-logo.jpg',
       imageFit: 'cover',
-      screenshots: ['/courtside-hub-live-tracker.jpg', '/courtside-hub-box-score.jpg'],
+      screenshots: ['./public/courtside-hub-live-tracker.jpg', './public/courtside-hub-box-score.jpg'],
       comingSoon: true,
       url: '#',
       metrics: 'Coming Soon'
