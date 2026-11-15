@@ -9,6 +9,8 @@ import {
   ChevronUp, 
   ExternalLink, 
   Mail, 
+  BookOpen,
+  Download,
   Play, 
   Sparkles, 
   X, 
@@ -30,6 +32,48 @@ interface AppItem {
   comingSoon?: boolean;
   url: string;
   metrics: string;
+}
+
+interface SocialLinksProps {
+  className: string;
+  compact?: boolean;
+}
+
+function SocialLinks({ className, compact = false }: SocialLinksProps) {
+  const linkClassName = `${compact ? 'w-6 h-6 sm:w-8 sm:h-8' : 'w-10 h-10'} rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all`;
+  const iconClassName = compact ? 'w-3 h-3 sm:w-4 sm:h-4' : 'w-4 h-4';
+
+  return (
+    <div className={className}>
+      <a href="https://www.reddit.com/user/coachmattb77/" target="_blank" rel="noopener noreferrer" className={linkClassName} aria-label="Reddit">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={iconClassName}>
+          <path d="m12 6.5 1-3.5 4 1" />
+          <circle cx="18" cy="3.5" r="1.5" />
+          <path d="M12 6.5c-4.7 0-8.5 3-8.5 7.2S7.3 21 12 21s8.5-3 8.5-7.3S16.7 6.5 12 6.5Z" />
+          <circle cx="8.5" cy="13.5" r=".8" fill="currentColor" stroke="none" />
+          <circle cx="15.5" cy="13.5" r=".8" fill="currentColor" stroke="none" />
+          <path d="M8.5 16c1.8 1.5 5.2 1.5 7 0" />
+        </svg>
+      </a>
+      <a href="https://x.com/coachmattb77" target="_blank" rel="noopener noreferrer" className={linkClassName} aria-label="X">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className={iconClassName}>
+          <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.4L3 2h6.2l4.3 5.8L18.9 2Zm-1.1 18h1.7L8.3 3.9H6.5L17.8 20Z" />
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className={linkClassName} aria-label="Instagram">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={iconClassName}>
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className={linkClassName} aria-label="Facebook">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className={iconClassName}>
+          <path d="M13.8 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.7-.1-1.6-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5V10H7v3h3v8h3.8Z" />
+        </svg>
+      </a>
+    </div>
+  );
 }
 
 export default function App() {
@@ -155,49 +199,54 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0b0f19] text-slate-100 selection:bg-orange-500 selection:text-white">
-      {/* TOP NAVIGATION BAR (Strict 3-zone contract) */}
+      {/* TOP NAVIGATION BAR */}
       <header className="sticky top-0 z-50 bg-[#0b0f19]/90 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4 lg:gap-8">
           {/* Zone 1: Brand Wordmark */}
-          <a href="#" className="flex items-center gap-2 group whitespace-nowrap shrink-0">
-            <img src="./public/coachmatt-logo.jpg" alt="CoachMattB logo" className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform" />
+          <a href="#" className="flex items-center gap-1 sm:gap-2 group whitespace-nowrap shrink-0">
+            <img src="./public/coachmatt-logo.jpg" alt="CoachMattB logo" className="w-7 h-7 sm:w-10 sm:h-10 rounded-xl object-cover shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform" />
             <div>
-              <span className="text-xl font-extrabold tracking-tight text-white font-heading">CoachMattB</span>
-              <span className="block text-[10px] text-orange-400 font-medium tracking-widest uppercase">Sports Tech Studio</span>
+              <span className="text-base sm:text-xl font-extrabold tracking-tight text-white font-heading">CoachMattB</span>
+              <span className="hidden sm:block text-[10px] text-orange-400 font-medium tracking-widest uppercase">Sports Tech Studio</span>
             </div>
           </a>
 
           {/* Zone 2: Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-6 text-xs xl:text-sm font-medium text-slate-400">
             <a href="#about" className="hover:text-white transition-colors whitespace-nowrap shrink-0">About</a>
             <a href="#apps" className="hover:text-white transition-colors whitespace-nowrap shrink-0">Apps & Tools</a>
+            <a href="#programs" className="hover:text-white transition-colors whitespace-nowrap shrink-0">Drills & Programs</a>
             <a href="#insights" className="hover:text-white transition-colors whitespace-nowrap shrink-0">Coaching Tips</a>
             <a href="#contact" className="hover:text-white transition-colors whitespace-nowrap shrink-0">Contact</a>
           </nav>
 
-          {/* Zone 3: Primary Action */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Zone 3: Social Links */}
+          <SocialLinks compact className="flex items-center gap-0.5 sm:gap-2 shrink-0" />
+
+          {/* Zone 4: Primary Action */}
+          <div className="flex items-center gap-1 sm:gap-3 shrink-0">
             <a 
               href="#apps" 
-              className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl hover:from-orange-600 hover:to-amber-700 shadow-lg shadow-orange-500/25 transition-all whitespace-nowrap shrink-0"
+              className="hidden xl:inline-flex px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl hover:from-orange-600 hover:to-amber-700 shadow-lg shadow-orange-500/25 transition-all whitespace-nowrap shrink-0"
             >
               Explore Apps
             </a>
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-400 hover:text-white"
+              className="lg:hidden p-1 sm:p-2 text-slate-400 hover:text-white"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
+          <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-white py-1">About</a>
             <a href="#apps" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-white py-1">Apps & Tools</a>
+            <a href="#programs" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-white py-1">Drills & Programs</a>
             <a href="#insights" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-white py-1">Coaching Tips</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-white py-1">Contact</a>
           </div>
@@ -461,6 +510,54 @@ export default function App() {
         </div>
       </section>
 
+      {/* DRILLS, PLAYS & SKILLS PROGRAMMES SECTION */}
+      <section id="programs" className="py-24 border-t border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-300 text-xs font-semibold mb-3">
+              <BookOpen className="w-4 h-4" />
+              <span>Coach Resources</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-heading uppercase tracking-tight">
+              Drills, Plays & Skills Programmes
+            </h2>
+            <p className="text-slate-400 text-sm mt-3 max-w-2xl mx-auto">
+              Practical basketball resources for building game understanding, confident decisions, and stronger team habits.
+            </p>
+          </div>
+
+          <article className="max-w-4xl mx-auto rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-xl shadow-black/20">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+              <div className="w-14 h-14 shrink-0 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                <BookOpen className="w-7 h-7" />
+              </div>
+              <div className="flex-1">
+                <span className="text-xs font-bold uppercase tracking-widest text-orange-400">5-Week Curriculum</span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white font-heading mt-2">
+                  Championship Basketball IQ Program
+                </h3>
+                <p className="text-slate-300 font-semibold mt-2">
+                  A 5-Week Curriculum for Read & React Offense, Spacing & Defensive Awareness
+                </p>
+                <p className="text-sm text-slate-400 leading-relaxed mt-4">
+                  A coach-ready progression focused on reading the game, creating effective spacing, and building defensive awareness.
+                </p>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  <a href="./championship-basketball-iq-program.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs font-bold uppercase tracking-wider transition-all">
+                    <BookOpen className="w-4 h-4" />
+                    View Program PDF
+                  </a>
+                  <a href="./championship-basketball-iq-program.pdf" download className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold uppercase tracking-wider transition-colors">
+                    <Download className="w-4 h-4" />
+                    Download PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       {/* COACHING TIPS & INSIGHTS SECTION */}
       <section id="insights" className="py-24 bg-[#0e1422] border-t border-slate-800/80">
         <div className="max-w-4xl mx-auto px-6">
@@ -611,36 +708,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4">
-              <a href="https://www.reddit.com/user/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Reddit">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                  <path d="m12 6.5 1-3.5 4 1" />
-                  <circle cx="18" cy="3.5" r="1.5" />
-                  <path d="M12 6.5c-4.7 0-8.5 3-8.5 7.2S7.3 21 12 21s8.5-3 8.5-7.3S16.7 6.5 12 6.5Z" />
-                  <circle cx="8.5" cy="13.5" r=".8" fill="currentColor" stroke="none" />
-                  <circle cx="15.5" cy="13.5" r=".8" fill="currentColor" stroke="none" />
-                  <path d="M8.5 16c1.8 1.5 5.2 1.5 7 0" />
-                </svg>
-              </a>
-              <a href="https://x.com/coachmattb77" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="X">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                  <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.4L3 2h6.2l4.3 5.8L18.9 2Zm-1.1 18h1.7L8.3 3.9H6.5L17.8 20Z" />
-                </svg>
-              </a>
-              <a href="https://www.instagram.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Instagram">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none" />
-                </svg>
-              </a>
-              <a href="https://www.facebook.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Facebook">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                  <path d="M13.8 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.7-.1-1.6-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5V10H7v3h3v8h3.8Z" />
-                </svg>
-              </a>
-            </div>
+            <SocialLinks className="flex items-center gap-4" />
           </div>
 
           <div className="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
