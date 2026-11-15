@@ -9,10 +9,6 @@ import {
   ChevronUp, 
   ExternalLink, 
   Mail, 
-  Twitter, 
-  Instagram, 
-  MessageCircle,
-  Users,
   Play, 
   Sparkles, 
   X, 
@@ -618,16 +614,31 @@ export default function App() {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <a href="https://www.reddit.com/user/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Reddit">
-                <MessageCircle className="w-4 h-4" />
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <path d="m12 6.5 1-3.5 4 1" />
+                  <circle cx="18" cy="3.5" r="1.5" />
+                  <path d="M12 6.5c-4.7 0-8.5 3-8.5 7.2S7.3 21 12 21s8.5-3 8.5-7.3S16.7 6.5 12 6.5Z" />
+                  <circle cx="8.5" cy="13.5" r=".8" fill="currentColor" stroke="none" />
+                  <circle cx="15.5" cy="13.5" r=".8" fill="currentColor" stroke="none" />
+                  <path d="M8.5 16c1.8 1.5 5.2 1.5 7 0" />
+                </svg>
               </a>
               <a href="https://x.com/coachmattb77" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="X">
-                <Twitter className="w-4 h-4" />
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.4L3 2h6.2l4.3 5.8L18.9 2Zm-1.1 18h1.7L8.3 3.9H6.5L17.8 20Z" />
+                </svg>
               </a>
               <a href="https://www.instagram.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Instagram">
-                <Instagram className="w-4 h-4" />
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none" />
+                </svg>
               </a>
               <a href="https://www.facebook.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Facebook">
-                <Users className="w-4 h-4" />
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M13.8 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.7-.1-1.6-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5V10H7v3h3v8h3.8Z" />
+                </svg>
               </a>
             </div>
           </div>
