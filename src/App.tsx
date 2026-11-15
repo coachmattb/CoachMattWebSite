@@ -34,6 +34,7 @@ interface AppItem {
   description: string;
   features: string[];
   image: string;
+  imageFit?: 'contain' | 'cover';
   url: string;
   metrics: string;
 }
@@ -48,20 +49,21 @@ export default function App() {
 
   const apps: AppItem[] = [
     {
-      id: 'hoop-metrics',
-      title: 'HoopMetrics Pro',
+      id: 'coachboard',
+      title: 'CoachBoard',
       category: 'Analytics',
-      tagline: 'Precision shooting efficiency & player development analytics',
-      description: 'Stops the guesswork in player progression. Tracks catch-and-shoot, off-the-dribble, and defensive rating shifts across seasons with automated heatmaps.',
+      tagline: 'Your entire basketball season, all in one place',
+      description: 'Manage your basketball season from one app: track schedules and league standings, follow team and player stats, record live game stats, and turn the season’s numbers into useful insights.',
       features: [
-        'Automated court shooting heatmaps & zone efficiency',
-        'Longitudinal player development trend charts',
-        'Exportable PDF scout reports for parents & players',
-        'Cloud-synced assistant coach sideline logging'
+        'Season tracking, schedules, and league standings',
+        'Team stats and individual player stat profiles',
+        'Live game stat tracking from the sideline',
+        'Season insights to follow team and player progress'
       ],
-      image: '/src/assets/images/app_drill_builder_1794752753929.jpg', // Using DrillBuilder or Fallback
+      image: '/coachboard-icon.png',
+      imageFit: 'contain',
       url: '#',
-      metrics: '+34% Shooting Accuracy Gain'
+      metrics: 'All-in-One Season Hub'
     },
     {
       id: 'drill-builder',
@@ -252,8 +254,8 @@ export default function App() {
                 <p className="text-xs text-slate-400">Coaching Experience</p>
               </div>
               <div>
-                <p className="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">4 Core</p>
-                <p className="text-xs text-slate-400">Specialized Apps</p>
+                <p className="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">4 Apps</p>
+                <p className="text-xs text-slate-400">1 All-in-One + 3 Tools</p>
               </div>
               <div>
                 <p className="text-2xl lg:text-3xl font-extrabold text-white font-heading">1,200+</p>
@@ -402,7 +404,7 @@ export default function App() {
                     <img 
                       src={app.image} 
                       alt={app.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                      className={`w-full h-full ${app.imageFit === 'contain' ? 'object-contain bg-white p-3' : 'object-cover'} group-hover:scale-105 transition-transform duration-500 opacity-90`}
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
@@ -659,7 +661,7 @@ export default function App() {
                 <img 
                   src={selectedApp.image} 
                   alt={selectedApp.title}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${selectedApp.imageFit === 'contain' ? 'object-contain bg-white p-3' : 'object-cover'}`}
                   referrerPolicy="no-referrer"
                 />
               </div>
