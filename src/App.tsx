@@ -10,10 +10,9 @@ import {
   ExternalLink, 
   Mail, 
   Twitter, 
-  Youtube, 
   Instagram, 
-  Linkedin, 
-  Github, 
+  MessageCircle,
+  Users,
   Play, 
   Sparkles, 
   X, 
@@ -43,6 +42,8 @@ export default function App() {
   const [expandedTip, setExpandedTip] = useState<number | null>(0);
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [contactError, setContactError] = useState<string | null>(null);
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const apps: AppItem[] = [
@@ -117,14 +118,43 @@ export default function App() {
     ? apps 
     : apps.filter(app => app.category === activeTab);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!contactForm.name || !contactForm.email || !contactForm.message) return;
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setContactForm({ name: '', email: '', message: '' });
-      setFormSubmitted(false);
-    }, 5000);
+    setContactError(null);
+    setIsSubmittingContact(true);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/coachmattb@proton.me', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: contactForm.name,
+          email: contactForm.email,
+          _replyto: contactForm.email,
+          _subject: `New website message from ${contactForm.name}`,
+          message: contactForm.message
+        })
+      });
+      const result = await response.json() as { success?: boolean | string; message?: string };
+
+      if (!response.ok || (result.success !== true && result.success !== 'true')) {
+        throw new Error(result.message || 'The email service rejected the message.');
+      }
+
+      setFormSubmitted(true);
+      setTimeout(() => {
+        setContactForm({ name: '', email: '', message: '' });
+        setFormSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Contact form submission failed', error);
+      setContactError('We couldn’t send your message. Please try again or email coachmattb@proton.me.');
+    } finally {
+      setIsSubmittingContact(false);
+    }
   };
 
   return (
@@ -505,7 +535,7 @@ export default function App() {
                 Get in Touch with CoachMattB
               </h2>
               <p className="text-slate-400 text-sm mt-2">
-                Have questions about custom sports tech apps, coaching consulting, or speaking engagements? Drop a message below.
+                Have questions about custom sports tech apps, coaching consulting, or speaking engagements? Your name, email, and message will be sent to coachmattb@proton.me through FormSubmit.
               </p>
             </div>
 
@@ -517,6 +547,11 @@ export default function App() {
               </div>
             ) : (
               <form onSubmit={handleContactSubmit} className="space-y-6">
+                {contactError && (
+                  <p role="alert" className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-300">
+                    {contactError}
+                  </p>
+                )}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Your Name</label>
@@ -556,10 +591,11 @@ export default function App() {
 
                 <button 
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-orange-500/30 transition-all flex items-center justify-center gap-2"
+                  disabled={isSubmittingContact}
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-orange-500/30 transition-all flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Send Message to CoachMattB</span>
+                  <span>{isSubmittingContact ? 'Sending...' : 'Send Message to CoachMattB'}</span>
                 </button>
               </form>
             )}
@@ -583,20 +619,17 @@ export default function App() {
 
             {/* Social Links */}
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Twitter">
+              <a href="https://www.reddit.com/user/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Reddit">
+                <MessageCircle className="w-4 h-4" />
+              </a>
+              <a href="https://x.com/coachmattb77" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="X">
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="YouTube">
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Instagram">
+              <a href="https://www.instagram.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Instagram">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="LinkedIn">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="GitHub">
-                <Github className="w-4 h-4" />
+              <a href="https://www.facebook.com/coachmattb77/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-orange-500 transition-all" aria-label="Facebook">
+                <Users className="w-4 h-4" />
               </a>
             </div>
           </div>
