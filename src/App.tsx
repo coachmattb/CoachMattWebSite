@@ -478,6 +478,22 @@ export default function App() {
                       </ul>
                     </div>
                   </div>
+                  {app.id === 'coachboard' && (
+                    <div className="px-6 pb-6 space-y-3">
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">CoachBoard in Action</h4>
+                      <div className="aspect-video overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
+                        <iframe
+                          className="w-full h-full"
+                          src="https://www.youtube-nocookie.com/embed/oEEpbmmF-Bw"
+                          title="CoachBoard app overview video"
+                          loading="lazy"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-6 pt-0 flex items-center justify-between gap-4">
@@ -713,6 +729,12 @@ export default function App() {
 
           <div className="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <p>© {new Date().getFullYear()} CoachMattB. All rights reserved. Built for basketball coaches & creators.</p>
+            <div className="flex items-center gap-2">
+              <span>Page views</span>
+              <a href="https://visitor-badge.laobi.icu/" target="_blank" rel="noopener noreferrer" title="Page-view counter provided by Visitor Badge" aria-label="Page-view count provided by Visitor Badge">
+                <img src={'https://visitor-badge.laobi.icu/badge?page_id=coachmattb.CoachMattWebSite&left_text=page%20views&right_color=orange'} alt="Live page-view counter" referrerPolicy="no-referrer" />
+              </a>
+            </div>
             <div className="flex items-center gap-6">
               <a href="#about" className="hover:text-slate-400">Privacy Policy</a>
               <a href="#apps" className="hover:text-slate-400">Terms of Service</a>
