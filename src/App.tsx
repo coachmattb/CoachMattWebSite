@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Trophy, 
-  Activity, 
   ClipboardList, 
   ShieldCheck, 
-  Users, 
   ArrowRight, 
   CheckCircle2, 
   ChevronDown, 
@@ -20,8 +18,6 @@ import {
   Sparkles, 
   X, 
   Send,
-  Zap,
-  Target,
   Clock,
   BarChart3
 } from 'lucide-react';
@@ -225,8 +221,8 @@ export default function App() {
             {/* Quick Proof Strip */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80">
               <div>
-                <p className="text-2xl lg:text-3xl font-extrabold text-white font-heading">15+ Yrs</p>
-                <p className="text-xs text-slate-400">Coaching Experience</p>
+                <p className="text-2xl lg:text-3xl font-extrabold text-white font-heading">Since 2018</p>
+                <p className="text-xs text-slate-400">Coaching with Carlow</p>
               </div>
               <div>
                 <p className="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">2 Apps</p>
@@ -239,31 +235,30 @@ export default function App() {
             </div>
           </div>
 
-          {/* Hero Visual Card / Graphic */}
+          {/* Featured App */}
           <div className="lg:col-span-5 relative">
             <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-orange-500 to-amber-600 opacity-30 blur-xl"></div>
             <div className="relative rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden shadow-2xl">
-              <img 
-                src="/src/assets/images/hero_coach_action_1794752754058.jpg" 
-                alt="CoachMattB courtside analytics"
-                className="w-full h-[380px] object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90"></div>
+              <div className="w-full h-[380px] bg-gradient-to-br from-slate-900 via-slate-950 to-orange-950 flex flex-col items-center justify-center p-8 pb-28 text-center relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:16px_16px]" />
+                <img src="./public/coachboard-icon.png" alt="CoachBoard basketball app icon" className="relative z-10 w-32 h-32 rounded-2xl bg-white object-contain p-2 mb-4 shadow-2xl shadow-orange-500/20" />
+                <h3 className="text-3xl font-bold text-white font-heading mb-2">CoachBoard</h3>
+                <p className="text-xs text-slate-300 max-w-sm">Your whole basketball season in one place: stats, live game tracking, insights, and league standings.</p>
+              </div>
               
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-800 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400">
-                    <Activity className="w-5 h-5" />
+                    <BarChart3 className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white">Live Sideline Telemetry</h3>
-                    <p className="text-xs text-slate-400">Real-time player efficiency tracking</p>
+                    <h3 className="text-sm font-bold text-white">CoachBoard</h3>
+                    <p className="text-xs text-slate-400">Season stats, schedules & standings</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-                  Active
-                </span>
+                <a href="https://play.google.com/store/apps/details?id=com.coachmattb.coachboard" target="_blank" rel="noopener noreferrer" className="px-3 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold transition-colors whitespace-nowrap">
+                  Get the App
+                </a>
               </div>
             </div>
           </div>
@@ -279,15 +274,14 @@ export default function App() {
               <div className="relative max-w-md mx-auto">
                 <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-orange-500/30 to-amber-500/0 blur-xl"></div>
                 <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
-                  <img 
-                    src="/src/assets/images/coach_avatar_1794752755444.jpg" 
-                    alt="CoachMattB head coach portrait" 
-                    className="w-full h-[450px] object-cover object-center"
-                    referrerPolicy="no-referrer"
+                  <img
+                    src="./public/coachmatt-carlow-profile.jpeg"
+                    alt="Coach Matt on court at Carlow Basketball"
+                    className="w-full h-[520px] object-cover object-[center_30%]"
                   />
                   <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent">
                     <h3 className="text-xl font-bold text-white font-heading">Coach Matt B.</h3>
-                    <p className="text-xs text-orange-400 font-medium">Founder & Head Developer, CoachMattB Tech</p>
+                    <p className="text-xs text-orange-400 font-medium">Coach & Basketball Developer</p>
                   </div>
                 </div>
               </div>
@@ -296,38 +290,24 @@ export default function App() {
             {/* Bio Content */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold">
-                <span>The Builder's Story</span>
+                <span>A Life in Basketball</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading uppercase tracking-tight">
-                Solving Real Coaching Friction Through Practical Software
+                Built by a Coach, for Coaches
               </h2>
 
               <p className="text-slate-300 text-base leading-relaxed">
-                After spending over 15 years courtside leading youth and high school basketball programs, I realized how much valuable coaching time was wasted wrestling with clipboards, scattered spreadsheets, and fragmented parent communication threads.
+                Basketball isn’t just a game to me—it’s been a life long journey. My love for the game started on the court in Poland, playing high school and college ball from 1985 to 2006, and continuing into Masters basketball in Ireland.
               </p>
 
               <p className="text-slate-300 text-base leading-relaxed">
-                That’s why I started building my own suite of sports tech tools. Every app in this portfolio was forged in the fire of real practices and tournament weekends—designed specifically to keep things simple, lightning-fast, and focused entirely on player development.
+                Since 2018, I’ve been on the sidelines coaching with Carlow Basketball—working across every level, from Academy U8/U10 programs and Men's senior teams to guiding the Basketball Ireland Academy program and leading our U11 Girls to a T4 tournament finish.
               </p>
 
-              <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Target className="w-5 h-5 text-orange-400" />
-                    <h4 className="font-bold text-white text-sm">Player Development First</h4>
-                  </div>
-                  <p className="text-xs text-slate-400">Metrics that emphasize fundamentals, defensive IQ, and tangible skill progression.</p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Zap className="w-5 h-5 text-orange-400" />
-                    <h4 className="font-bold text-white text-sm">Courtside Speed</h4>
-                  </div>
-                  <p className="text-xs text-slate-400">Zero lag, large touch targets, and offline support built for high-stress game environments.</p>
-                </div>
-              </div>
+              <p className="text-slate-300 text-base leading-relaxed">
+                Over decades of playing and coaching teams at every developmental stage, I realized how much time coaches spend managing logistics, playbooks, and team operations instead of focusing on what really matters: developing players. That’s why I started building software tailored specifically for basketball coaches—creating intuitive apps designed by someone who truly knows the game from the inside out.
+              </p>
             </div>
           </div>
         </div>
