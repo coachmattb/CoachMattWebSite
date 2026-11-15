@@ -29,18 +29,20 @@ import {
 interface AppItem {
   id: string;
   title: string;
-  category: 'Analytics' | 'Practice' | 'Scouting';
+  category: 'Analytics' | 'Team Management';
   tagline: string;
   description: string;
   features: string[];
   image: string;
   imageFit?: 'contain' | 'cover';
+  screenshots?: string[];
+  comingSoon?: boolean;
   url: string;
   metrics: string;
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'all' | 'Analytics' | 'Practice' | 'Scouting'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'Analytics' | 'Team Management'>('all');
   const [selectedApp, setSelectedApp] = useState<AppItem | null>(null);
   const [expandedTip, setExpandedTip] = useState<number | null>(0);
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
@@ -62,56 +64,29 @@ export default function App() {
       ],
       image: '/coachboard-icon.png',
       imageFit: 'contain',
-      url: '#',
+      url: 'https://play.google.com/store/apps/details?id=com.coachmattb.coachboard',
       metrics: 'All-in-One Season Hub'
     },
     {
-      id: 'drill-builder',
-      title: 'DrillBuilder Studio',
-      category: 'Practice',
-      tagline: 'Drag-and-drop practice planner with timed player rotations',
-      description: 'Eliminates wasted practice minutes. Build custom 90-minute practice blocks with exact station rotations, video attachments, and automatic whistle timers.',
+      id: 'courtside-hub',
+      title: 'Courtside Hub: Basketball',
+      category: 'Team Management',
+      tagline: 'A different approach to live games, seasons, and player stats',
+      description: 'Ditch the clipboards and scattered apps. Courtside Hub brings game planning, practice building, live stat tracking, roster management, and season-long player development into one coach-designed basketball assistant.',
       features: [
-        'Visual tactical court diagram editor with arrows',
-        'Timed practice timeline with automated audio whistles',
-        'Player group load-balancing to prevent exhaustion',
-        'One-click sharing to player mobile apps'
+        'Interactive playbook, tactical diagrams, and opponent scouting',
+        'Time-blocked practices, drill library, and coach sharing',
+        'Live box scores, advanced metrics, and shot charts',
+        'Player profiles, attendance, rotations, and playing time',
+        'Season stats, development reports, and exportable box scores',
+        'Offline access for practices and live games'
       ],
-      image: '/src/assets/images/app_drill_builder_1794752753929.jpg',
+      image: '/courtside-hub-logo.jpg',
+      imageFit: 'cover',
+      screenshots: ['/courtside-hub-live-tracker.jpg', '/courtside-hub-box-score.jpg'],
+      comingSoon: true,
       url: '#',
-      metrics: 'Save 4.5 Hours Weekly'
-    },
-    {
-      id: 'scout-master',
-      title: 'ScoutMaster AI',
-      category: 'Scouting',
-      tagline: 'Advanced opponent breakdown & tactical play playbook',
-      description: 'Break down opponent game film in half the time. Tag pick-and-roll coverages, transition tendencies, and set plays into instant scout cards.',
-      features: [
-        'Opponent personnel tendency rating radar charts',
-        'Instant defensive coverage tag library',
-        'Playbook generator with animated set diagrams',
-        'Sideline quick-reference cheat sheets'
-      ],
-      image: '/src/assets/images/app_scout_master_1794752754007.jpg',
-      url: '#',
-      metrics: '2.5x Faster Film Study'
-    },
-    {
-      id: 'stat-keeper',
-      title: 'StatKeeper Live',
-      category: 'Analytics',
-      tagline: 'Lightning-fast sideline box scoring for assistant coaches',
-      description: 'Designed for high-speed courtside entry. One-tap tracking for rebounds, turnovers, deflections, and +/- without looking away from live action.',
-      features: [
-        'Zero-latency tap interface optimized for tablets',
-        'Instant lineup efficiency & plus-minus tracking',
-        'Automatic live box score generation',
-        'Offline fallback mode with auto-sync'
-      ],
-      image: '/src/assets/images/coach_avatar_1794752755444.jpg',
-      url: '#',
-      metrics: '99.8% Data Entry Accuracy'
+      metrics: 'Coming Soon'
     }
   ];
 
@@ -254,8 +229,8 @@ export default function App() {
                 <p className="text-xs text-slate-400">Coaching Experience</p>
               </div>
               <div>
-                <p className="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">4 Apps</p>
-                <p className="text-xs text-slate-400">1 All-in-One + 3 Tools</p>
+                <p className="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">2 Apps</p>
+                <p className="text-xs text-slate-400">1 Available + 1 Coming Soon</p>
               </div>
               <div>
                 <p className="text-2xl lg:text-3xl font-extrabold text-white font-heading">1,200+</p>
@@ -370,13 +345,13 @@ export default function App() {
                 All-in-One Coaching Apps
               </h2>
               <p className="text-slate-400 text-sm mt-2 max-w-xl">
-                Explore our suite of specialized web apps designed to streamline your season from pre-season tryouts to the championship buzzer.
+                Explore our basketball tools for managing the season, preparing the team, and tracking player development.
               </p>
             </div>
 
             {/* Category Filter Tabs (Interactive buttons) */}
             <div className="flex items-center gap-2 p-1.5 bg-slate-900 rounded-xl border border-slate-800">
-              {(['all', 'Analytics', 'Practice', 'Scouting'] as const).map((tab) => (
+              {(['all', 'Analytics', 'Team Management'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -401,12 +376,23 @@ export default function App() {
               >
                 <div>
                   <div className="relative h-56 overflow-hidden bg-slate-950">
-                    <img 
-                      src={app.image} 
-                      alt={app.title}
-                      className={`w-full h-full ${app.imageFit === 'contain' ? 'object-contain bg-white p-3' : 'object-cover'} group-hover:scale-105 transition-transform duration-500 opacity-90`}
-                      referrerPolicy="no-referrer"
-                    />
+                    {app.screenshots ? (
+                      <div className="grid h-full w-full grid-cols-[0.7fr_1.3fr] items-center gap-3 bg-slate-950 p-4">
+                        <img src={app.image} alt={`${app.title} logo`} className="w-full rounded-xl object-cover" />
+                        <div className="grid gap-2">
+                          {app.screenshots.map((screenshot) => (
+                            <img key={screenshot} src={screenshot} alt={`${app.title} app screenshot`} className="w-full max-h-[88px] rounded-md border border-slate-700 object-contain" />
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        src={app.image}
+                        alt={app.title}
+                        className={`w-full h-full ${app.imageFit === 'contain' ? 'object-contain bg-white p-3' : 'object-cover'} group-hover:scale-105 transition-transform duration-500 opacity-90`}
+                        referrerPolicy="no-referrer"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
                     
                     <div className="absolute top-4 left-4 flex items-center gap-2">
@@ -449,13 +435,21 @@ export default function App() {
                     <span>Quick Preview</span>
                     <Play className="w-3.5 h-3.5 fill-current" />
                   </button>
-                  <a 
-                    href={app.url} 
-                    className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2"
-                  >
-                    <span>View App / Download</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                  {app.comingSoon ? (
+                    <span className="flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider flex items-center justify-center">
+                      Coming Soon
+                    </span>
+                  ) : (
+                    <a
+                      href={app.url}
+                      target={app.id === 'coachboard' ? '_blank' : undefined}
+                      rel={app.id === 'coachboard' ? 'noopener noreferrer' : undefined}
+                      className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2"
+                    >
+                      <span>View App / Download</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -658,12 +652,23 @@ export default function App() {
 
             <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
               <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 h-48">
-                <img 
-                  src={selectedApp.image} 
-                  alt={selectedApp.title}
-                  className={`w-full h-full ${selectedApp.imageFit === 'contain' ? 'object-contain bg-white p-3' : 'object-cover'}`}
-                  referrerPolicy="no-referrer"
-                />
+                {selectedApp.screenshots ? (
+                  <div className="grid h-full grid-cols-[0.7fr_1.3fr] items-center gap-3 p-3">
+                    <img src={selectedApp.image} alt={`${selectedApp.title} logo`} className="w-full rounded-lg object-cover" />
+                    <div className="grid gap-2">
+                      {selectedApp.screenshots.map((screenshot) => (
+                        <img key={screenshot} src={screenshot} alt={`${selectedApp.title} app screenshot`} className="w-full max-h-[76px] rounded-md border border-slate-700 object-contain" />
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={selectedApp.image}
+                    alt={selectedApp.title}
+                    className={`w-full h-full ${selectedApp.imageFit === 'contain' ? 'object-contain bg-white p-3' : 'object-cover'}`}
+                    referrerPolicy="no-referrer"
+                  />
+                )}
               </div>
 
               <div>
@@ -691,13 +696,21 @@ export default function App() {
               >
                 Close
               </button>
-              <a
-                href={selectedApp.url}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-orange-500/25 transition-all flex items-center gap-2"
-              >
-                <span>Launch / Download</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              {selectedApp.comingSoon ? (
+                <span className="px-6 py-2.5 rounded-xl bg-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider">
+                  Coming Soon
+                </span>
+              ) : (
+                <a
+                  href={selectedApp.url}
+                  target={selectedApp.id === 'coachboard' ? '_blank' : undefined}
+                  rel={selectedApp.id === 'coachboard' ? 'noopener noreferrer' : undefined}
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-orange-500/25 transition-all flex items-center gap-2"
+                >
+                  <span>Launch / Download</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
             </div>
           </div>
         </div>
