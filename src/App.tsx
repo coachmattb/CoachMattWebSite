@@ -484,7 +484,7 @@ export default function App() {
                       <div className="aspect-video overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
                         <iframe
                           className="w-full h-full"
-                          src="https://www.youtube-nocookie.com/embed/oEEpbmmF-Bw"
+                          src="https://www.youtube-nocookie.com/embed/MZ2JuldE9K8"
                           title="CoachBoard app overview video"
                           loading="lazy"
                           referrerPolicy="strict-origin-when-cross-origin"
