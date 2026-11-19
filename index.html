@@ -84,6 +84,21 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script type="module">
+      import { analytics } from 'https://esm.sh/@heycatch/sdk@0.8.5';
+
+      analytics.init({
+        projectKey: 'hck_pk_xuatxfcywWXToXLhCRIIakTRjBD7PF-f',
+        install: {
+          framework: 'web',
+          agent: 'other',
+        },
+        site: 'landing',
+      });
+
+      window.heycatchAnalytics = analytics;
+    </script>
+
     <style>
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
@@ -870,6 +885,9 @@
           }
 
           form.classList.add('hidden');
+          if (window.heycatchAnalytics) {
+            window.heycatchAnalytics.trackEvent('contact_form_submitted');
+          }
           document.getElementById('contact-success').classList.remove('hidden');
           form.reset();
           setTimeout(() => {
