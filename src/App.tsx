@@ -571,6 +571,29 @@ export default function App() {
               </div>
             </div>
           </article>
+
+          <article className="max-w-4xl mx-auto mt-8 rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-xl shadow-black/20">
+            <div className="text-center mb-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-orange-400">Coaching Drill</span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white font-heading mt-2">
+                Drill from CoachMattB
+              </h3>
+            </div>
+            <div className="max-w-sm mx-auto aspect-[9/16] overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube-nocookie.com/embed/imH0-WBPEdw"
+                title="CoachMattB coaching drill"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <p className="text-sm text-slate-400 text-center mt-5">
+              Watch and use this drill with your team to reinforce key basketball habits.
+            </p>
+          </article>
         </div>
       </section>
 
