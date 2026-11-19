@@ -239,8 +239,8 @@
               <p class="text-xs text-slate-400">Coaching with Carlow</p>
             </div>
             <div>
-              <p class="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">2 Apps</p>
-              <p class="text-xs text-slate-400">1 Available + 1 Coming Soon</p>
+              <p class="text-2xl lg:text-3xl font-extrabold text-orange-400 font-heading">3 Apps</p>
+              <p class="text-xs text-slate-400">1 Available + 2 Coming Soon</p>
             </div>
             <div>
               <p class="text-2xl lg:text-3xl font-extrabold text-white font-heading">1,200+</p>
@@ -335,15 +335,16 @@
               All-in-One Coaching Apps
             </h2>
             <p class="text-slate-400 text-sm mt-2 max-w-xl">
-              Explore our basketball tools for managing the season, preparing the team, and tracking player development.
+              Explore our basketball tools for managing the season, preparing the team, designing plays, and tracking player development.
             </p>
           </div>
 
           <!-- Category Filter Tabs -->
-          <div class="flex items-center gap-2 p-1.5 bg-slate-900 rounded-xl border border-slate-800">
-            <button onclick="filterApps('all')" class="app-tab px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize bg-orange-500 text-white shadow-md shadow-orange-500/30" data-category="all">All</button>
-            <button onclick="filterApps('Analytics')" class="app-tab px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white" data-category="Analytics">Analytics</button>
-            <button onclick="filterApps('Team Management')" class="app-tab px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white" data-category="Team Management">Team Management</button>
+          <div class="flex max-w-full items-center gap-2 overflow-x-auto p-1.5 bg-slate-900 rounded-xl border border-slate-800">
+            <button onclick="filterApps('all')" class="app-tab shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize bg-orange-500 text-white shadow-md shadow-orange-500/30" data-category="all">All</button>
+            <button onclick="filterApps('Analytics')" class="app-tab shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white" data-category="Analytics">Analytics</button>
+            <button onclick="filterApps('Team Management')" class="app-tab shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white" data-category="Team Management">Team Management</button>
+            <button onclick="filterApps('Play Design')" class="app-tab shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white" data-category="Play Design">Play Design</button>
           </div>
         </div>
 
@@ -445,6 +446,60 @@
               <span class="flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider flex items-center justify-center">
                 Coming Soon
               </span>
+            </div>
+          </div>
+
+          <!-- Tactical Board -->
+          <div class="app-card group md:col-span-2 rounded-2xl bg-slate-900 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 overflow-hidden shadow-xl" data-category="Play Design">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+              <div class="p-6 sm:p-8 flex flex-col gap-6">
+                <div class="flex items-start gap-4">
+                  <img src="./public/tactical-board-icon.png" alt="Tactical Board basketball court icon" class="h-20 w-20 shrink-0 rounded-2xl bg-white object-contain shadow-xl" />
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                      <span class="px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-bold uppercase tracking-wider">Play Design</span>
+                      <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">In Development</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white font-heading">Tactical Board: Basketball</h3>
+                    <p class="text-sm font-medium text-sky-300 mt-1">A digital tactical board, built for coaches</p>
+                  </div>
+                </div>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Draw basketball plays and practice drills, save them to your library, animate player movement, then export and share your ideas with friends and fellow coaches. It will be free to download.
+                </p>
+
+                <div class="space-y-2">
+                  <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">What you can do</p>
+                  <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i> Draw plays and drills</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i> Save them in a play library</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i> Animate player movement</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i> Export and share with friends</li>
+                  </ul>
+                </div>
+
+                <div class="mt-auto flex flex-wrap items-center gap-3">
+                  <button onclick="openModal('Tactical Board: Basketball', 'Play Design', 'A digital tactical board for basketball coaches. Draw plays and drills, save them in a library, animate player movement, and export or share your ideas. It will be free to download.', ['Draw basketball plays and practice drills', 'Save and organize your plays in a library', 'Animate player and ball movement', 'Export and share with friends and fellow coaches'])" class="py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2">
+                    <span>Quick Preview</span>
+                    <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                  </button>
+                  <span class="px-4 py-3 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-bold uppercase tracking-wider">
+                    Free download when ready
+                  </span>
+                </div>
+              </div>
+
+              <div class="min-w-0 p-6 sm:p-8 lg:pl-0 flex flex-col justify-center">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">A first look at the app</p>
+                <div class="flex gap-3 overflow-x-auto pb-2" aria-label="Tactical Board app screenshots">
+                  <img src="./public/tactical-board-court.png" alt="Tactical Board full-court play design" class="w-24 sm:w-28 shrink-0 aspect-[9/16] rounded-xl border border-slate-700 bg-slate-950 object-cover" loading="lazy" />
+                  <img src="./public/tactical-board-animation.png" alt="Tactical Board animated play with player movement" class="w-24 sm:w-28 shrink-0 aspect-[9/16] rounded-xl border border-slate-700 bg-slate-950 object-cover" loading="lazy" />
+                  <img src="./public/tactical-board-library.png" alt="Tactical Board saved play library" class="w-24 sm:w-28 shrink-0 aspect-[9/16] rounded-xl border border-slate-700 bg-slate-950 object-cover" loading="lazy" />
+                  <img src="./public/tactical-board-save-play.png" alt="Tactical Board save-play screen with coach notes" class="w-24 sm:w-28 shrink-0 aspect-[9/16] rounded-xl border border-slate-700 bg-slate-950 object-cover" loading="lazy" />
+                  <img src="./public/tactical-board-settings.png" alt="Tactical Board appearance and offline settings" class="w-24 sm:w-28 shrink-0 aspect-[9/16] rounded-xl border border-slate-700 bg-slate-950 object-cover" loading="lazy" />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -780,9 +835,9 @@
         // Update tab styles
         document.querySelectorAll('.app-tab').forEach(tab => {
           if (tab.getAttribute('data-category') === category) {
-            tab.className = 'app-tab px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize bg-orange-500 text-white shadow-md shadow-orange-500/30';
+            tab.className = 'app-tab shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize bg-orange-500 text-white shadow-md shadow-orange-500/30';
           } else {
-            tab.className = 'app-tab px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white';
+            tab.className = 'app-tab shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-lg transition-all capitalize text-slate-400 hover:text-white';
           }
         });
 
