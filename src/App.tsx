@@ -623,15 +623,18 @@ export default function App() {
                 <BookOpen className="w-7 h-7" />
               </div>
               <div className="flex-1">
-                <span className="text-xs font-bold uppercase tracking-widest text-orange-400">{translate('5-Week Curriculum', 'Program na 5 tygodni')}</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-orange-400">{translate('U13 Girls · 5 Weeks · 10 Sessions', 'Dziewczęta U13 · 5 tygodni · 10 sesji')}</span>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white font-heading mt-2">
-                  {translate('Championship Basketball IQ Program', 'Mistrzowski program rozwoju koszykarskiego IQ')}
+                  {translate('U13 Girls Championship Program', 'Program mistrzowski U13 dla dziewcząt')}
                 </h3>
                 <p className="text-slate-300 font-semibold mt-2">
-                  {translate('A 5-Week Curriculum for Read & React Offense, Spacing & Defensive Awareness', '5-tygodniowy program: atak Read & React, spacing i świadomość w obronie')}
+                  {translate('Coaching Philosophy & 60-Minute Session Framework', 'Filozofia treningu i struktura 60-minutowej sesji')}
                 </p>
                 <p className="text-sm text-slate-400 leading-relaxed mt-4">
-                  {translate('A coach-ready progression focused on reading the game, creating effective spacing, and building defensive awareness.', 'Gotowy do wdrożenia program dla trenerów, który rozwija czytanie gry, skuteczne ustawianie się na boisku i świadomość w obronie.')}
+                  {translate(
+                    'Two sessions per week across five weeks (10 sessions total). At U13, basketball IQ grows through decision-making, spatial dynamics, and rhythm rather than memorized set plays. Session A develops technical execution and pattern recognition; Session B applies learning in live Small Sided Games (SSGs) under defensive pressure.',
+                    'Dwie sesje tygodniowo przez pięć tygodni (łącznie 10 sesji). Na poziomie U13 rozwój rozumienia gry opiera się na podejmowaniu decyzji, orientacji przestrzennej i rytmie, a nie na zapamiętywaniu gotowych zagrywek. Sesja A rozwija wykonanie techniczne i rozpoznawanie schematów; sesja B pozwala wykorzystać te umiejętności w grze na małej przestrzeni (SSG) pod presją obrony.'
+                  )}
                 </p>
                 <div className="flex flex-wrap gap-3 mt-6">
                   <a href="./championship-basketball-iq-program.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs font-bold uppercase tracking-wider transition-all">
