@@ -373,7 +373,7 @@ export default function App() {
                 <p className="text-xs text-slate-400">{translate('1 Available + 1 Coming Soon', '1 dostępna + 1 wkrótce')}</p>
               </div>
               <div>
-                <p className="text-2xl lg:text-3xl font-extrabold text-white font-heading">1,200+</p>
+                <p className="text-2xl lg:text-3xl font-extrabold text-white font-heading">100</p>
                 <p className="text-xs text-slate-400">{translate('Coaches & Players', 'Trenerów i zawodników')}</p>
               </div>
             </div>
