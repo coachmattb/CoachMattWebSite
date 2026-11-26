@@ -136,8 +136,8 @@ export default function App() {
       category: 'Team Management',
       tagline: translate('A different approach to live games, seasons, and player stats', 'Nowe podejście do meczów, sezonów i statystyk zawodników'),
       description: translate(
-        'Ditch the clipboards and scattered apps. Courtside Hub brings game planning, practice building, live stat tracking, roster management, and season-long player development into one coach-designed basketball assistant.',
-        'Odstaw schowki i rozproszone aplikacje. Courtside Hub łączy planowanie meczów i treningów, statystyki na żywo, zarządzanie składem oraz całosezonowy rozwój zawodników w jednym asystencie stworzonym przez trenera.'
+        'Ditch the clipboards and scattered apps. Courtside Hub brings game planning, practice building, live stat tracking, roster management, and season-long player development into one coach-designed basketball assistant. The app releases on 1 December 2026; Club and communication features arrive in 2027.',
+        'Odstaw schowki i rozproszone aplikacje. Courtside Hub łączy planowanie meczów i treningów, statystyki na żywo, zarządzanie składem oraz całosezonowy rozwój zawodników w jednym asystencie stworzonym przez trenera. Aplikacja zostanie wydana 1 grudnia 2026 r.; funkcje Club i komunikacji pojawią się w 2027 r.'
       ),
       features: [
         translate('Interactive playbook, tactical diagrams, and opponent scouting', 'Interaktywny playbook, diagramy taktyczne i analiza przeciwników'),
@@ -145,14 +145,20 @@ export default function App() {
         translate('Live box scores, advanced metrics, and shot charts', 'Wyniki i statystyki na żywo, zaawansowane wskaźniki i mapy rzutów'),
         translate('Player profiles, attendance, rotations, and playing time', 'Profile zawodników, obecność, rotacje i czas gry'),
         translate('Season stats, development reports, and exportable box scores', 'Statystyki sezonowe, raporty rozwoju i eksport wyników meczów'),
-        translate('Offline access for practices and live games', 'Dostęp offline podczas treningów i meczów')
+        translate('Offline access for practices and live games', 'Dostęp offline podczas treningów i meczów'),
+        translate('Club and communication features coming in 2027', 'Funkcje Club i komunikacji w 2027 r.')
       ],
-      image: './public/courtside-hub-logo.jpg',
+      image: './public/courtside-hub-season-stats.jpg',
       imageFit: 'cover',
-      screenshots: ['./public/courtside-hub-live-tracker.jpg', './public/courtside-hub-box-score.jpg'],
+      screenshots: [
+        './public/courtside-hub-club-hq.jpg',
+        './public/courtside-hub-playbook.jpg',
+        './public/courtside-hub-live-game.jpg',
+        './public/courtside-hub-match-day.jpg'
+      ],
       comingSoon: true,
       url: '#',
-      metrics: translate('Coming Soon', 'Wkrótce')
+      metrics: translate('Releasing 1 December 2026', 'Premiera 1 grudnia 2026')
     }
   ];
 
@@ -505,11 +511,11 @@ export default function App() {
                 <div>
                   <div className="relative h-56 overflow-hidden bg-slate-950">
                     {app.screenshots ? (
-                      <div className="grid h-full w-full grid-cols-[0.7fr_1.3fr] items-center gap-3 bg-slate-950 p-4">
-                        <img src={app.image} alt={translate(`${app.title} logo`, `Logo aplikacji ${app.title}`)} className="w-full rounded-xl object-cover" />
-                        <div className="grid gap-2">
+                      <div className="grid h-full w-full grid-cols-[1.15fr_0.85fr] items-stretch gap-2 bg-slate-950 p-3">
+                        <img src={app.image} alt={translate(`${app.title} season statistics`, `Statystyki sezonowe aplikacji ${app.title}`)} className="h-full w-full rounded-lg border border-slate-700 object-cover" />
+                        <div className="grid grid-cols-2 gap-2">
                           {app.screenshots.map((screenshot) => (
-                            <img key={screenshot} src={screenshot} alt={translate(`${app.title} app screenshot`, `Zrzut ekranu aplikacji ${app.title}`)} className="w-full max-h-[88px] rounded-md border border-slate-700 object-contain" />
+                            <img key={screenshot} src={screenshot} alt={translate(`${app.title} app screenshot`, `Zrzut ekranu aplikacji ${app.title}`)} className="h-full w-full rounded-md border border-slate-700 object-cover" />
                           ))}
                         </div>
                       </div>
@@ -871,11 +877,11 @@ export default function App() {
             <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
               <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 h-48">
                 {localizedSelectedApp.screenshots ? (
-                  <div className="grid h-full grid-cols-[0.7fr_1.3fr] items-center gap-3 p-3">
-                    <img src={localizedSelectedApp.image} alt={translate(`${localizedSelectedApp.title} logo`, `Logo aplikacji ${localizedSelectedApp.title}`)} className="w-full rounded-lg object-cover" />
-                    <div className="grid gap-2">
+                  <div className="grid h-full grid-cols-[1.15fr_0.85fr] items-stretch gap-2 p-3">
+                    <img src={localizedSelectedApp.image} alt={translate(`${localizedSelectedApp.title} season statistics`, `Statystyki sezonowe aplikacji ${localizedSelectedApp.title}`)} className="h-full w-full rounded-lg border border-slate-700 object-cover" />
+                    <div className="grid grid-cols-2 gap-2">
                       {localizedSelectedApp.screenshots.map((screenshot) => (
-                        <img key={screenshot} src={screenshot} alt={translate(`${localizedSelectedApp.title} app screenshot`, `Zrzut ekranu aplikacji ${localizedSelectedApp.title}`)} className="w-full max-h-[76px] rounded-md border border-slate-700 object-contain" />
+                        <img key={screenshot} src={screenshot} alt={translate(`${localizedSelectedApp.title} app screenshot`, `Zrzut ekranu aplikacji ${localizedSelectedApp.title}`)} className="h-full w-full rounded-md border border-slate-700 object-cover" />
                       ))}
                     </div>
                   </div>
